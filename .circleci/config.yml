@@ -7,7 +7,7 @@ jobs:
       CHANGE_MINIKUBE_NONE_USER: true
       MINIKUBE_WANTUPDATENOTIFICATION: false
       MINIKUBE_WANTREPORTERRORPROMPT: false
-      KUBECTL_VERSION: 1.10.0
+      KUBECTL_VERSION: 1.11.0
       # NOTE: Only supports v0.25.0 and below (because CircleCI machines run Ubuntu 14)
       MINIKUBE_VERSION: 0.25.0
     steps:
