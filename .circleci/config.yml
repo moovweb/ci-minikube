@@ -5,12 +5,14 @@ jobs:
     machine: true
     environment:
       CHANGE_MINIKUBE_NONE_USER: true
-      MINIKUBE_VERSION: 0.25.0
+      MINIKUBE_WANTUPDATENOTIFICATION: false
+      MINIKUBE_WANTREPORTERRORPROMPT: false
       KUBECTL_VERSION: 1.10.0
+      # NOTE: Only supports v0.25.0 and below (because CircleCI machines run Ubuntu 14)
+      MINIKUBE_VERSION: 0.25.0
     steps:
       - checkout
       - run: curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
-      # NOTE: Only supports v0.25.0 and below (because CircleCI machines run Ubuntu 14)
       - run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/v${MINIKUBE_VERSION}/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
       - run: sudo minikube start --vm-driver=none
       - run: sudo minikube update-context
